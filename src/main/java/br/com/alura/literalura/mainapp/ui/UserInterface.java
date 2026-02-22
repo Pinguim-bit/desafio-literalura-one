@@ -2,12 +2,10 @@ package br.com.alura.literalura.mainapp.ui;
 
 import br.com.alura.literalura.repository.LivroRepository;
 import br.com.alura.literalura.repository.PessoaRepository;
-import br.com.alura.literalura.services.GetClassFromJson;
 
 import java.util.Scanner;
 
 public class UserInterface {
-    private static final GetClassFromJson converter = new GetClassFromJson();
     private final LivroRepository livroRepository;
     private final PessoaRepository pessoaRepository;
 
