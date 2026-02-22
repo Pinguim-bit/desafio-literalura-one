@@ -1,11 +1,7 @@
 package br.com.alura.literalura.mainapp.ui;
 
-import br.com.alura.literalura.mainapp.links.GutendexApi;
-import br.com.alura.literalura.models.Livro;
-import br.com.alura.literalura.models.Pessoa;
 import br.com.alura.literalura.repository.LivroRepository;
 import br.com.alura.literalura.services.GetClassFromJson;
-import br.com.alura.literalura.services.GetFromUrl;
 
 import java.util.Scanner;
 
@@ -29,7 +25,10 @@ public class UserInterface {
             System.out.println("1 - Buscar livro por título");
             System.out.println("2 - Listar todos os livros");
             System.out.println("3 - Listar livros por idioma");
-            System.out.println("0 - Sair");
+            System.out.println("4 - Listar autores");//
+            System.out.println("5 - Listar autores vivos em determinado ano");//
+            System.out.println("6 - Exibir a quantidade de livros em um determinado idioma");//
+            System.out.println("0 - Sair");//
             System.out.print("Escolha uma opção: ");
 
             while (true) {
@@ -53,11 +52,16 @@ public class UserInterface {
                     break;
 
                 case 2:
-                    System.out.println("Opção 2 selecionada.");
+                    ListAllBooksFromDB consultarLivros = new ListAllBooksFromDB(livroRepository);
+                    consultarLivros.listAll();
                     break;
 
                 case 3:
-                    System.out.println("Opção 3 selecionada.");
+                    System.out.println("Digite a sigla do idioma(ex: en, pt ...): ");
+                    String  sigla = scanner.nextLine();
+
+                    FindForLanguage buscarIdioma = new FindForLanguage(livroRepository);
+                    buscarIdioma.buscar(sigla);
                     break;
 
                 case 0:

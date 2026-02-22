@@ -50,9 +50,8 @@ public class Pessoa {
 
     @Override
     public String toString() {
-        return "\tNome: '" + nome + '\n' +
-                "\tAno de Nascimento: " + anoNascimento + '\n' +
-                "\tAno de Morte=" + anoMorte + '\n' +
-                "\t----------------------------------\n";
+        return "\n\tNome: '" + nome + '\n' +
+                "\t\tAno de Nascimento: " + anoNascimento + '\n' +
+                "\t\tAno de Morte=" + anoMorte + "\n\n";
     }
 }

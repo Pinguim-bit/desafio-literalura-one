@@ -13,15 +13,15 @@ public class Livro {
     private Long id;
     private String titulo;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "livro_id")
     private List<Pessoa> autores;
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     @Column(columnDefinition = "TEXT")
     private List<String> resumo;
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     private List<String> idiomas;
 
     private Integer contadorDownload;
