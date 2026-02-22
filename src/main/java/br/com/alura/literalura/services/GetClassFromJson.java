@@ -12,6 +12,7 @@ public class GetClassFromJson {
             JsonNode rootNode = mapper.readTree(json);
             JsonNode dataNode = rootNode.path("results").get(0);
             String results = String.valueOf(dataNode);
+            //System.out.println(results);
             return mapper.readValue(results, classe);
         }  catch (JacksonException e) {
             throw new RuntimeException(e);
