@@ -1,6 +1,7 @@
 package br.com.alura.literalura.mainapp.ui;
 
 import br.com.alura.literalura.repository.LivroRepository;
+import br.com.alura.literalura.repository.PessoaRepository;
 import br.com.alura.literalura.services.GetClassFromJson;
 
 import java.util.Scanner;
@@ -8,9 +9,11 @@ import java.util.Scanner;
 public class UserInterface {
     private static final GetClassFromJson converter = new GetClassFromJson();
     private final LivroRepository livroRepository;
+    private final PessoaRepository pessoaRepository;
 
-    public UserInterface(LivroRepository livroRepository) {
+    public UserInterface(LivroRepository livroRepository, PessoaRepository pessoaRepository) {
         this.livroRepository = livroRepository;
+        this.pessoaRepository = pessoaRepository;
     }
 
     public void menu() {
@@ -62,6 +65,23 @@ public class UserInterface {
 
                     FindForLanguage buscarIdioma = new FindForLanguage(livroRepository);
                     buscarIdioma.buscar(sigla);
+                    break;
+
+                case 4:
+                    ListAllAuthors autores = new ListAllAuthors(pessoaRepository);
+                    autores.listAll();
+                    break;
+
+                case 5:
+                    FindAuthorByYear autoresPorAno = new FindAuthorByYear(pessoaRepository);
+                    autoresPorAno.findByYear();
+                    break;
+
+                case 6:
+                    CountBooksByLanguage contadorDeLivrosPorIdioma = new CountBooksByLanguage(livroRepository);
+                    System.out.println("Digite a sigla do idioma(ex: en, pt ...): ");
+                    String idiomaParaContar = scanner.nextLine();
+                    contadorDeLivrosPorIdioma.run(idiomaParaContar);
                     break;
 
                 case 0:
